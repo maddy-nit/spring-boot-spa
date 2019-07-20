@@ -83,9 +83,11 @@ and open this cloned project in any in IDE(like Eclipse)
 
 ## Setup a new server in Production
 ----------------
+Need to be updated
+
 - Start jar in backgroud -
 ```
-nohup java -jar docker-ws-[0.0.10].jar &
+nohup java -jar spring-boot-spa.jar &
 ```
 
 :+1: This is great. It looks Great. It's ready to use Java now ! :shipit:

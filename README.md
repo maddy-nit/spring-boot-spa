@@ -83,12 +83,29 @@ and open this cloned project in any in IDE(like Eclipse)
 
 ## Setup a new server in Production
 ----------------
-Need to be updated
+- Clone from repo from bitbucket repo and building the project-
+```
+git clone https://github.com/maddy-nit/spring-boot-spa.git
+mvn install
+```
+- Building docker image named 'spring-boot-spa '
+```
+docker build -t spring-boot-spa .
+```
+- Starting project into container
+```
+docker rm -f spring-boot-spa;docker run -d --name spring-boot-spa -p 8080:8001 spring-boot-spa
+```
+- Verifying the logs
+```
+docker logs -f spring-boot-spa
+```
 
-- Start jar in backgroud -
-```
-nohup java -jar spring-boot-spa.jar &
-```
+## App Monitoring
+You can use the following technology-agnostic endpoints(For more [detail](https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#production-ready)):
+http://<domain>/actuator/info
+http://<domain>/actuator/health
+
 
 :+1: This is great. It looks Great. It's ready to use Java now ! :shipit:
 

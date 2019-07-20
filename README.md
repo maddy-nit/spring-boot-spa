@@ -68,7 +68,7 @@ yum upgrade -y nss;yum upgrade -y curl
 ## Additional steps to build the project in Devlopement
 ----------------
 
-Clone from repo from bitbucket repo-
+Clone from repo from git repo-
 
 ```
 git clone https://github.com/maddy-nit/spring-boot-spa.git
@@ -83,7 +83,7 @@ and open this cloned project in any in IDE(like Eclipse)
 
 ## Setup a new server in Production
 ----------------
-- Clone from repo from bitbucket repo and building the project-
+- Clone from repo from git repo and building the project-
 ```
 git clone https://github.com/maddy-nit/spring-boot-spa.git
 mvn install

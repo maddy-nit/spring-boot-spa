@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import com.successive.entities.User;
 import com.successive.repositories.UserRepository;
+import java.util.stream.StreamSupport;
 
 @Controller
 public class UserController {
@@ -32,9 +33,9 @@ public class UserController {
         if (result.hasErrors()) {
             return "add-user";
         }
-
         userRepository.save(user);
-        model.addAttribute("users", userRepository.findAll());
+        if(StreamSupport.stream(userRepository.findAll().spliterator(), false).count() > 0)
+            model.addAttribute("users", userRepository.findAll());
         return "index";
     }
 
@@ -53,7 +54,8 @@ public class UserController {
         }
 
         userRepository.save(user);
-        model.addAttribute("users", userRepository.findAll());
+        if(StreamSupport.stream(userRepository.findAll().spliterator(), false).count() > 0)
+            model.addAttribute("users", userRepository.findAll());
         return "index";
     }
 
@@ -61,13 +63,15 @@ public class UserController {
     public String deleteUser(@PathVariable("id") long id, Model model) {
         User user = userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
         userRepository.delete(user);
-        model.addAttribute("users", userRepository.findAll());
+        if(StreamSupport.stream(userRepository.findAll().spliterator(), false).count() > 0)
+            model.addAttribute("users", userRepository.findAll());
         return "index";
     }
 
     @GetMapping("/")
     public String home(Model model) {
-        model.addAttribute("users", userRepository.findAll());
+        if(StreamSupport.stream(userRepository.findAll().spliterator(), false).count() > 0)
+            model.addAttribute("users", userRepository.findAll());
         return "index";
     }
 }
